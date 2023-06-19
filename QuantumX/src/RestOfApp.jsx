@@ -1,13 +1,23 @@
 import React from 'react'
-import { useFirebase } from './FirebaseProvider'
+// import { useFirebase } from './FirebaseProvider'
+import { useAuth } from './AuthProvider'
+import Login from "./Login"
+import PhysicsList from './PhysicsList'
+import PhysicsForm from './PhysicsForm'
 
 const RestOfApp = () => {
-  const fb = useFirebase();
-  const app= fb.app;
+  const auth =useAuth();
+  const user =auth.user;
+  // const fb = useFirebase();
+  // const app= fb.app;
   return (
-    <div>
-      App: {JSON.stringify(app)}
-    </div>
+    <div className='App'>
+{user ? 'you are logged in!' : 'not logged in 😔'
+}
+<Login/>
+<PhysicsList/>
+<PhysicsForm/>
+</div>
   )
 }
 
